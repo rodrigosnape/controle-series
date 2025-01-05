@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeasonsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
 
@@ -28,3 +29,6 @@ Assim o Laravel entende que é para deletar.
 Route::delete('/series/destroy/{serie}', [SeriesController::class, 'destroy'])
     ->name('series.destroy');
 */
+
+Route::get('/series/{serieId}/seasons', [SeasonsController::class, 'index'])
+    ->name('seasons.index');
