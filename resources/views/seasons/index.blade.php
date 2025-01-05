@@ -1,4 +1,4 @@
-<x-layout title="Temporadas de {!! $series->nome !!}}">
+<x-layout title="Temporadas">
 
     <ul class="list-group">
         @foreach ($seasons as $season)
