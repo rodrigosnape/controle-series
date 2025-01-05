@@ -4,11 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/series');
 });
 
-Route::get('/series',[SeriesController::class, 'index']);
+//https://laravel.com/docs/11.x/controllers#resource-controllers
+//Substitui o código abaixo
+Route::resource('/series', SeriesController::class)
+    ->except(['show']);
+    //->only(['index', 'create', 'store', 'destroy', 'edit', 'update']);
 
-Route::get('/series/criar',[SeriesController::class, 'create']);
-
-Route::post('/series/salvar',[SeriesController::class, 'store']);
+/*
+Route::controller(SeriesController::class)->group(function(){
+    Route::get('/series', 'index')->name('series.index');
+    Route::get('/series/criar', 'create')->name('series.create');
+    Route::post('/series/salvar', 'store')->name('series.store');
+});
+*/
+/*
+@method('DELETE') no formulário 'traduz' o post para DELETE.
+Assim o Laravel entende que é para deletar.
+*/
+/*
+Route::delete('/series/destroy/{serie}', [SeriesController::class, 'destroy'])
+    ->name('series.destroy');
+*/
