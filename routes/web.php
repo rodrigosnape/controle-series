@@ -30,5 +30,5 @@ Route::delete('/series/destroy/{serie}', [SeriesController::class, 'destroy'])
     ->name('series.destroy');
 */
 
-Route::get('/series/{serieId}/seasons', [SeasonsController::class, 'index'])
+Route::get('/series/{series}/seasons', [SeasonsController::class, 'index'])
     ->name('seasons.index');
